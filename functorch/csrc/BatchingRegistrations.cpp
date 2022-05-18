@@ -569,7 +569,7 @@ Tensor block_diag_batching_rule(TensorList tensors) {
       tensors.size() > 0, "The dispatcher should not have dispatched here otherwise.");
   // Implementing this as a dummy for loop for now, since I'm not sure how to do it any better.
   // I'm probably not accounting for potentially multiple batched dimensions?
-  auto bdim = tensors[0].size(0);
+  auto bdim = physical_tensors[0].size(0);
   std::vector<Tensor> batched_outputs;
   for (const auto& i : c10::irange(bdim)) {
     std::vector<Tensor> inputs_for_batch;
